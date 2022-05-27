@@ -34,7 +34,7 @@ public class CalculatorTest {
 		int actual = cal.add(a, b);
 		
 		int expected = 9999;
-		assertEquals (expected, actual);
+		assertEquals (actual, expected);
 	}
 	@Test
 	public void testSubtract() {
@@ -60,5 +60,37 @@ public class CalculatorTest {
 		int expected = 15;
 		assertEquals (actual, expected);
 	}
+	@Test
+	  public void testDivideWith0Denominator() {
+//	    fail("Not yet implemented");
+	    int a = 100;
+	    int b = 0;
+	    try {
+	      Calculator cal = new Calculator();
+	      cal.divide(a, b);
+	      //if operation completes, test is not executed properly.
+	      fail("Expected an Illegal Exception to be thrown");
+	      
+	  }
+	    catch(IllegalArgumentException e) {
+	      assertEquals("Division by zero is not allowed", e.getMessage());
+	  }
+	    catch(Throwable t) {
+	      assertEquals("Expected an IllegalArgumentException to be thrown", t.getMessage());
+	  }
+	    
+	    
+	  }
+	  @Test
+	  public void testDivideWithNon0Denominator() {
+		  
+	    int a = 100;
+	    int b = 5;
+	    Calculator cal = new Calculator();
+	    int actual = cal.divide(a, b);
+	    
+	    int expected = 20;
+	    assertEquals(expected, actual);
+	  }
 
 }
